@@ -46,3 +46,6 @@ class HolbertonCourse {
     }
   }
 }
+
+const myCourse = new HolbertonCourse("Web Development", 12, ["Alice", "Bob"]);
+console.log(myCourse);
