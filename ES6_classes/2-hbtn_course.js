@@ -1,4 +1,4 @@
-class HolbertonCourse {
+export default class HolbertonCourse {
   constructor(name, length, students) {
     if (typeof name !== 'string') throw new TypeError('Name must be a string');
     if (typeof length !== 'number') throw new TypeError('Legnth must be a number');
@@ -28,7 +28,7 @@ class HolbertonCourse {
 
   set length(newLength) {
     if (typeof newLength === 'number' && newLength > 0) {
-      this.length = newLength;
+      this._length = newLength;
     } else {
       console.error('Invalid length');
     }
@@ -39,13 +39,10 @@ class HolbertonCourse {
   }
 
   set students(newStudents) {
-    if(Array.isArray(newStudents)) {
+    if (Array.isArray(newStudents)) {
       this._students = newStudents;
     } else {
       console.error('Invalid students array');
     }
   }
 }
-
-const myCourse = new HolbertonCourse("Web Development", 12, ["Alice", "Bob"]);
-console.log(myCourse);
