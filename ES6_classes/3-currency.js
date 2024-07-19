@@ -1,5 +1,3 @@
-import { code } from "esutils";
-
 export default class Currency {
   constructor(code, name) {
     this._code = code;
@@ -13,7 +11,7 @@ export default class Currency {
   set code(newCode) {
     this._code = newCode;
   }
-   
+
   get name() {
     return this._name;
   }
@@ -23,6 +21,6 @@ export default class Currency {
   }
 
   displayFullCurrency() {
-    return '${this._name} (${this._code})';
+    return `${this._name} (${this._code})`;
   }
 }
