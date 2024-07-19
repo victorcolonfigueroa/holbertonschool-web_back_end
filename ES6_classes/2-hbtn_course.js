@@ -1,59 +1,64 @@
 export default class HolbertonCourse {
   constructor(name, length, students) {
-    this._name = this._validateName(name);
-    this._length = this._validateLength(length);
-    this._students = this._validateStudents(students);
-  }
-
-  // Validate name
-  _validateName(name) {
-    if (typeof name !== 'string') {
-      throw new TypeError('Name must be a string');
+    // Verify the types of attributes during object creation
+    if (typeof name === 'string') {
+      // Store attributes in underscore attribute versions
+      this._name = name;
+    } else {
+      throw TypeError('Name must be a string');
     }
-    return this._name;
-  }
 
-  // Validate length
-  _validateLength(length) {
-    if (typeof length !== 'number') {
-      throw new TypeError('Length must be a number');
+    if (typeof length === 'number') {
+      // Store attributes in underscore attribute versions
+      this._length = length;
+    } else {
+      throw TypeError('Length must be a number');
     }
-    return this._length;
-  }
 
-  _validateStudents(students) {
-    if (!Array.isArray(students) || !students.every((student) => typeof student === 'string')) {
-      throw new TypeError('Students must be an array of strings');
+    if (Array.isArray(students) && students.every((student) => typeof student === 'string')) {
+      // Store attributes in underscore attribute versions
+      this._students = students;
+    } else {
+      throw TypeError('Students must be an array of strings');
     }
-    // Example of using 'this' in a class method, even if not needed for validation
-    this.lastValidationDate = new Date();
-    return students;
   }
 
-  // Getter and setter for name
+  // Getter and setter for the 'name' attribute
   get name() {
     return this._name;
   }
 
   set name(newName) {
-    this._name = this._validateName(newName);
+    if (typeof newName === 'string') {
+      this._name = newName;
+    } else {
+      throw TypeError('Name must be a string');
+    }
   }
 
-  // Getter and setter for length
+  // Getter and setter for the 'length' attribute
   get length() {
     return this._length;
   }
 
   set length(newLength) {
-    this._length = this._validateLength(newLength);
+    if (typeof newLength === 'number') {
+      this._length = newLength;
+    } else {
+      throw TypeError('Length must be a number');
+    }
   }
 
-  // Getter and setter for students
+  // Getter and setter for the 'students' attribute
   get students() {
     return this._students;
   }
 
   set students(newStudents) {
-    this._students = this._validateStudents(newStudents);
+    if (Array.isArray(newStudents) && newStudents.every((student) => typeof student === 'string')) {
+      this._students = newStudents;
+    } else {
+      throw TypeError('Students must be an array of strings');
+    }
   }
 }
