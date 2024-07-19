@@ -1,21 +1,26 @@
-import { construct } from 'core-js/fn/reflect';
-import Currency from './3-currency';
-
-import { construct } from 'core-js/fn/reflect';
 import Currency from './3-currency';
 
 export default class Pricing {
   constructor(amount, currency) {
-    this._amount = amount;
-    this._currency = currency;
-  }
+    if (typeof amount === 'number') {
+      this._amount = amount;
+    } else {
+      throw TypeError('Amount must be a number');
+    }
 
-  get amount() {
-    return this._amount;
+    if (currency instanceof Currency) {
+      this._currency = currency
+    } else {
+      throw TypeError('Currency must be an instnace of Currency');
+    }
   }
 
   set amount(newAmount) {
-    this._amount = newAmount;
+    if (typeof newAmount === 'number') {
+      this._amount = newAmount;
+    } else {
+      throw TypeError('Amount must be a number');
+    }
   }
 
   get currency() {
@@ -23,14 +28,22 @@ export default class Pricing {
   }
 
   set currency(newCurrency) {
-    this._currency = newCurrency;
+    if (newCurrency instanceof Currency) {
+      this._currency = newCurrency;
+    } else {
+      throw TypeError('Currency must be an instance of Currency');
+    }
   }
 
   displayFullPrice() {
-    return `$(this._amount) ${this._currency.name} (${this._currency.code})`;
+    const { name, code } = this._currency;
+    return `${this._amount} ${name} (${code})`;
   }
 
   static convertPrice(amount, conversionRate) {
-    return amount * conversionRate;
+    if (typeof amount === 'number' && typeof conversionRate === 'number') {
+      return amount * conversionRate;
+    }
+    throw TypeError('Amount and conversion rate must be numbers');
   }
 }
