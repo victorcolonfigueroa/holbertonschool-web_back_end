@@ -2,8 +2,6 @@ import { code } from "esutils";
 
 export default class Currency {
   constructor(code, name) {
-    if (typeof code !== 'string') throw new TypeError('Code must be a string');
-    if (typeof name !== 'string') throw new TypeError('Name must be a string');
     this._code = code;
     this._name = name;
   }
@@ -13,11 +11,7 @@ export default class Currency {
   }
 
   set code(newCode) {
-    if (typeof newCode == 'string' && newCode.length > 0) {
-        this._code = newCode;
-    } else {
-        console.error('Invalid code');
-    }
+    this._code = newCode;
   }
    
   get name() {
@@ -25,11 +19,7 @@ export default class Currency {
   }
 
   set name(newName) {
-    if (typeof newName == 'string' && newName.length > 0) {
-        this._name = newName;
-    } else {
-        console.error('Invalid name');
-    }
+    this._name = newName;
   }
 
   displayFullCurrency() {
