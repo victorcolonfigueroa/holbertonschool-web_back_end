@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# does a sum of floats
+"sums floats adn returns the result"
 def add(a: float, b: float) -> float:
 
     return a + b
