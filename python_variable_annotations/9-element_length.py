@@ -13,5 +13,3 @@ def element_length(lst: List[str]) -> List[Tuple[str, int]]:
         List[Tuple[str, int]]: A list of tuples where each tuple contains a string from the input list and its length.
     """
     return [(i, len(i)) for i in lst]
-def  element_length(lst: List[str]) -> List[Tuple[str, int]]:
-    return [(i, len(i)) for i in lst]
