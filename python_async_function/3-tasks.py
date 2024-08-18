@@ -1,15 +1,14 @@
-import asyncio
-from 0-basic_async_syntax import wait_random
+import { uploadPhoto, createUser } from './utils';
 
+function handleProfileSignup() {
+  return Promise.all([uploadPhoto(), createUser()])
+    .then((results) => {
+      const [photo, user] = results;
+      console.log(`${photo.body} ${user.firstName} ${user.lastName}`);
+    })
+    .catch(() => {
+      console.log('Signup system offline');
+    });
+}
 
-def task_wait_random(max_delay: int) -> asyncio.Task:
-    """
-    Create and return an asyncio.Task object that wraps the wait_random function.
-
-    Args:
-        max_delay (int): The maximum delay value for wait_random.
-
-    Returns:
-        asyncio.Task: An asyncio.Task object that represents the execution of wait_random.
-    """
-    return asyncio.create_task(wait_random(max_delay))
+export default handleProfileSignup;
