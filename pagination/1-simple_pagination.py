@@ -5,7 +5,7 @@
 
 import csv
 import math
-from typing import List
+from typing import List, Tuple
 
 
 class Server:
@@ -29,7 +29,7 @@ class Server:
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         """gets the pages"""
-        assert isinstance(page, int) and page > 0,
+        assert isinstance(page, int) and page > 0
         assert isinstance(page_size, int) and page_size > 0
 
         start_index, end_index = index_range(page, page_size)
@@ -41,7 +41,7 @@ class Server:
         return dataset[start_index:end_index]
 
 
-def index_range(page: int, page_size: int) -> Tuple[int, int]:
+def index_range(page: int, page_size: int)  -> Tuple[int, int]:
     """return pages """
     start_index = (page - 1) * page_size
     end_index = page * page_size
