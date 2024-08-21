@@ -36,7 +36,7 @@ class Server:
         return dataset[start_index:end_index]
     
         
-def index_range(page: int, page_size: int) -> tuple:
+def index_range(page: int, page_size: int) -> Tuple[int, int]:
     """
     Returns the start and end indices for a given page and page size.
 
