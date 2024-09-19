@@ -1,0 +1,14 @@
+console.log("Welcome to Holberton School, what is your naem?");
+
+process.stdin.setEncoding('utf8');
+
+process.stdin.on('readable', () => {
+    const chunk = process.stdin.read();
+    if (chunk !== null) {
+        process.stdout.write("Your name is: $(chunk)");
+    }
+});
+
+process.stdin.on('end', () => {
+    console.log("This important sowftware")
+});
