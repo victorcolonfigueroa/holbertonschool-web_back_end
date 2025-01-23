@@ -1,5 +1,6 @@
-function signUpUser(firstName, lastName) {
-  return Promise.resolve({ firstName, lastName });
-}
+def sign_up_user(first_name, last_name):
+    return {"first_name": first_name, "last_name": last_name}
 
-export default signUpUser;
+if __name__ == "__main__":
+    user = sign_up_user("John", "Doe")
+    print(user)

@@ -2,4 +2,4 @@ function displayMessage(str) {
     console.log(str);
   }
 
-  module.exports = displayMessage;
+  export default displayMessage;
