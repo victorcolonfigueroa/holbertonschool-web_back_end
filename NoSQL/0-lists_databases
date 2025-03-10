@@ -1,2 +1,1 @@
-// shows databases
-show dbs
+use my_db
