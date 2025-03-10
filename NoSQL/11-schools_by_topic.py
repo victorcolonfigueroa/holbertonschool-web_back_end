@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
+"""Returns the list of schools having a specific topic."""
 
-import pymongo
 from typing import List, Dict
 
 

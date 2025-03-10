@@ -1,1 +1,2 @@
+// finds all
 db.school.find()

@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+"""Inserts a new document in a MongoDB collection."""
+
 import pymongo
 
 

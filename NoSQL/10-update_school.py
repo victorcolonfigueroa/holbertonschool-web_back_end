@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+"""Changes all topics of a school document based on the name."""
+
 import pymongo
 from typing import List
 

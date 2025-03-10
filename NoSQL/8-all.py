@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+""" Lists all the documents in a MongoDB collection."""
 
 import pymongo
 
