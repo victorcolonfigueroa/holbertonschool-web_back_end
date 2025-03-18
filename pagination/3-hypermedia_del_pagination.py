@@ -40,26 +40,28 @@ class Server:
         return self.__indexed_dataset
 
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
-        """returns a dict"""
-        assert type(index) == int
-        assert type(page_size) == int
-        assert index >= 0
-        assert index < len(self.indexed_dataset())
+        """Return a dictionary with pagination info handling deleted items
 
-        csv = self.indexed_dataset()
+        Args:
+            index (int): the current start index of the return page
+            page_size (int): the current page size
+
+        Returns:
+            Dict: contains index, next_index, page_size, and data
+        """
+        indexed_data = self.indexed_dataset()
+        assert index is not None and index >= 0 and index < len(self.dataset())
+
         data = []
-
         next_index = index
-
-        for item in range(page_size):
-            while not csv.get(next_index):
-                next_index += 1
-            data.append(csv.get(next_index))
+        while len(data) < page_size and next_index < len(self.dataset()):
+            if next_index in indexed_data:
+                data.append(indexed_data[next_index])
             next_index += 1
 
         return {
-            "index": index,
-            "data": data,
-            "page_size": page_size,
-            "next_index": next_index
-            }
+            'index': index,
+            'data': data,
+            'page_size': page_size,
+            'next_index': next_index
+        }
