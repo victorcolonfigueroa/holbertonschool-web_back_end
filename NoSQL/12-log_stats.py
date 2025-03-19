@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-
-    Run the script directly to see the log statistics.
+        Run the script directly to see the log statistics.
 """
+
 
 from pydoc import doc
 from pymongo import MongoClient
