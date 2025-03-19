@@ -2,8 +2,6 @@
 """
         Run the script directly to see the log statistics.
 """
-
-
 from pydoc import doc
 from pymongo import MongoClient
 
