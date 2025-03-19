@@ -1,2 +1,2 @@
-//counts db
+//counts the db
 db.school.count()
