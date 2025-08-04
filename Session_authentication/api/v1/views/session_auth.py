@@ -62,3 +62,21 @@ def session_login() -> str:
         response.set_cookie(session_name, session_id)
     
     return response
+
+
+@app_views.route('/auth_session/logout', methods=['DELETE'], strict_slashes=False)
+def session_logout() -> str:
+    """ DELETE /api/v1/auth_session/logout
+    Return:
+      - Empty JSON dictionary with status code 200
+      - 404 if session destruction fails
+    """
+    # Import auth only when needed to avoid circular import
+    from api.v1.app import auth
+    
+    # Destroy the session
+    if not auth.destroy_session(request):
+        abort(404)
+    
+    # Return empty JSON dictionary with status code 200
+    return jsonify({}), 200
