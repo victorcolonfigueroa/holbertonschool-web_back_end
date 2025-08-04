@@ -3,6 +3,8 @@
 Module for SessionAuth class
 """
 from api.v1.auth.auth import Auth
+from models.user import User
+from typing import TypeVar
 import uuid
 
 
@@ -58,3 +60,26 @@ class SessionAuth(Auth):
         
         # Use .get() to access the dictionary value based on key
         return self.user_id_by_session_id.get(session_id)
+
+    def current_user(self, request=None) -> TypeVar('User'):
+        """
+        Returns a User instance based on a cookie value (overload)
+        
+        Args:
+            request: The Flask request object
+            
+        Returns:
+            User: The User instance, or None if not found
+        """
+        # Get the session cookie from the request
+        session_id = self.session_cookie(request)
+        if session_id is None:
+            return None
+        
+        # Get the user ID based on the session ID
+        user_id = self.user_id_for_session_id(session_id)
+        if user_id is None:
+            return None
+        
+        # Retrieve the User instance from the database
+        return User.get(user_id)
